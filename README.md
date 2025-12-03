@@ -1,24 +1,17 @@
 # Selenium Screenshot Project
 
-This is a simple Java project that uses Selenium WebDriver to take a screenshot of a webpage (Google in this example) and save it locally.
+A simple Java project using Selenium WebDriver to take a screenshot of a webpage (Google in this example) and save it locally.
 
 ## Features
 
-- Launches Chrome browser using Selenium WebDriver.
+- Opens Chrome browser via Selenium WebDriver.
 - Navigates to [Google](https://www.google.com).
-- Takes a screenshot of the page.
-- Saves the screenshot to a specified folder in the project (`screenshots`).
-
-## Prerequisites
-
-- Java JDK 24 or later installed.
-- Chrome browser installed.
-- ChromeDriver included in the project under the `drivers` folder (no need to download separately).
+- Takes a screenshot and saves it in `screenshots/`.
 
 ## Setup
 
-1. Make sure the `drivers` folder contains `chromedriver.exe`.
-2. Ensure the path in the code points to the ChromeDriver location:
+1. Ensure `drivers/chromedriver.exe` exists in the project.
+2. Update the path in `ScreenshotTest.java` if needed:
 
 ```java
 System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
