@@ -13,7 +13,7 @@ public class ScreenshotTest {
         // Set path to ChromeDriver executable
         // Make sure chromedriver.exe is placed in the 'drivers' folder
         System.setProperty("webdriver.chrome.driver",
-                "C:\\Users\\kisa_\\IdeaProjects\\2_QA_Engineer_Portfolio\\Selenium-screenshort\\drivers\\chromedriver.exe");
+                "C:\\Users\\kisa_\\IdeaProjects\\2_QA_Engineer_Portfolio\\Selenium-screenshot\\drivers\\chromedriver.exe");
 
         // Initialize Chrome browser
         WebDriver driver = new ChromeDriver();
@@ -26,7 +26,7 @@ public class ScreenshotTest {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
             // Specify destination path for the screenshot
-            Path destination = Path.of("C:\\Users\\kisa_\\IdeaProjects\\2_QA_Engineer_Portfolio\\Selenium-screenshort\\google_screenshot.png");
+            Path destination = Path.of("C:\\Users\\kisa_\\IdeaProjects\\2_QA_Engineer_Portfolio\\Selenium-screenshot\\google_screenshot.png");
 
             // Copy the screenshot to destination
             Files.copy(screenshot.toPath(), destination);
