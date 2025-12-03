@@ -6,40 +6,35 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.Logger;
+import java.nio.file.Path;
 
 public class ScreenshotTest {
-    private static final Logger logger = Logger.getLogger(ScreenshotTest.class.getName());
+    public static void main(String[] args) throws IOException {
+        // Set path to ChromeDriver executable
+        // Make sure chromedriver.exe is placed in the 'drivers' folder
+        System.setProperty("webdriver.chrome.driver",
+                "C:\\Users\\kisa_\\IdeaProjects\\2_QA_Engineer_Portfolio\\Selenium-screenshort\\drivers\\chromedriver.exe");
 
-    public static void main(String[] args) {
-        // Set the path to chromedriver if it’s not in the system PATH // Укажи путь к chromedriver, если он не в PATH
-        System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver\\chromedriver-win64\\chromedriver.exe");
-
+        // Initialize Chrome browser
         WebDriver driver = new ChromeDriver();
 
         try {
-            // Open the website // Открываем сайт
+            // Navigate to Google
             driver.get("https://www.google.com");
 
-            // Take a screenshot // Делаем скриншот
+            // Take screenshot of the page
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-            // Save a screenshot // Сохраняем скриншот
-            File destinationFile = new File("screenshot.png");
-            Files.copy(screenshot.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            // Specify destination path for the screenshot
+            Path destination = Path.of("C:\\Users\\kisa_\\IdeaProjects\\2_QA_Engineer_Portfolio\\Selenium-screenshort\\google_screenshot.png");
 
-            logger.info("Скриншот сохранен " + destinationFile.getAbsolutePath());
+            // Copy the screenshot to destination
+            Files.copy(screenshot.toPath(), destination);
 
-            System.out.println("Скриншот сохранён: " + destinationFile.getAbsolutePath());
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Ошибка при сохранении скриншота", e);
+            System.out.println("Screenshot saved at: " + destination.toString());
         } finally {
-            // Close the browser // Закрываем браузер
+            // Close the browser
             driver.quit();
         }
     }
 }
-
